@@ -1,6 +1,6 @@
 import 'package:movie_bloc_retrofit/api/api_repository.dart';
 import 'package:movie_bloc_retrofit/bloc/movie_bloc_observer.dart';
-import 'package:movie_bloc_retrofit/bloc/movies_bloc.dart';
+import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_bloc.dart';
 import 'package:movie_bloc_retrofit/ui/home/movie_main_pages.dart';
 import 'package:movie_bloc_retrofit/ui/movie_popular_pages.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       home:
       BlocProvider(
         create: (context) {
-          return MovieBloc(repository: ApiRepository());
+          return MoviePopularBloc(repository: ApiRepository());
         },
         child: MovieMainPages(),
       ),

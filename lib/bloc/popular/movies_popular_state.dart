@@ -1,30 +1,30 @@
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
 import 'package:equatable/equatable.dart';
 
-abstract class MoviesState extends Equatable {
-  const MoviesState();
+abstract class MoviesPopularState extends Equatable {
+  const MoviesPopularState();
 
   @override
   List<Object> get props => [];
 }
 
-class InitialMoviesState extends MoviesState {}
+class InitialMoviesPopularState extends MoviesPopularState {}
 
-class MoviesLoading extends MoviesState {}
+class MoviesPopularLoading extends MoviesPopularState {}
 
-class MoviesHasData extends MoviesState {
+class MoviesPopularHasData extends MoviesPopularState {
   final List<MoviesItem> movieList;
 
-  const MoviesHasData([this.movieList]);
+  const MoviesPopularHasData([this.movieList]);
 
   @override
   List<Object> get props => [movieList];
 }
 
-class MoviesNoData extends MoviesState {
+class MoviesPopularNoData extends MoviesPopularState {
   final String message;
 
-  const MoviesNoData(this.message);
+  const MoviesPopularNoData(this.message);
 
   List<Object> get props => [message];
 
@@ -32,10 +32,10 @@ class MoviesNoData extends MoviesState {
   String toString() => 'Movies No Data (message : $message)';
 }
 
-class MoviesNoInternetConnection extends MoviesState {
+class MoviesPopularNoInternetConnection extends MoviesPopularState {
   final String message;
 
-  const MoviesNoInternetConnection(this.message);
+  const MoviesPopularNoInternetConnection(this.message);
 
   @override
   List<Object> get props => [message];
@@ -44,10 +44,10 @@ class MoviesNoInternetConnection extends MoviesState {
   String toString() => 'Movies No Internet(message : $message)';
 }
 
-class MoviesError extends MoviesState {
+class MoviesPopularError extends MoviesPopularState {
   final String errorMessage;
 
-  const MoviesError(this.errorMessage);
+  const MoviesPopularError(this.errorMessage);
 
   @override
   List<Object> get props => [errorMessage];

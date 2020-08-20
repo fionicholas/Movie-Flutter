@@ -1,6 +1,6 @@
-import 'package:movie_bloc_retrofit/bloc/movies_bloc.dart';
-import 'package:movie_bloc_retrofit/bloc/movies_event.dart';
-import 'package:movie_bloc_retrofit/bloc/movies_state.dart';
+import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_bloc.dart';
+import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_event.dart';
+import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_state.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/chip_genre_movies.dart';
 import 'package:movie_bloc_retrofit/ui/shimmer_movies.dart';
@@ -16,7 +16,7 @@ class _MoviePopularPagesState extends State<MoviePopularPages> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<MovieBloc>(context).add(LoadPopularMovie());
+    BlocProvider.of<MoviePopularBloc>(context).add(LoadPopularMovie());
   }
 
   @override
@@ -25,18 +25,18 @@ class _MoviePopularPagesState extends State<MoviePopularPages> {
       appBar: AppBar(
         title: Text('Movie Popular'),
       ),
-      body: BlocBuilder<MovieBloc, MoviesState>(
+      body: BlocBuilder<MoviePopularBloc, MoviesPopularState>(
           builder: (context, state){
-            if(state is MoviesHasData){
+            if(state is MoviesPopularHasData){
               return BuildList(listMoviePopular: state.movieList);
-            }else if(state is MoviesLoading){
+            }else if(state is MoviesPopularLoading){
               return ShimmerMovies();
-            }else if (state is MoviesNoData) {
+            }else if (state is MoviesPopularNoData) {
               return Center(child: Text(state.message),);
             }
-            else if(state is MoviesError){
+            else if(state is MoviesPopularError){
               return Center(child: Text(state.errorMessage));
-            }else if(state is MoviesNoInternetConnection){
+            }else if(state is MoviesPopularNoInternetConnection){
               return Center(child: Text(state.message),);
             }
             else {

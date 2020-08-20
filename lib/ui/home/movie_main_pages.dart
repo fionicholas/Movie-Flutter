@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_bloc_retrofit/bloc/movies_bloc.dart';
-import 'package:movie_bloc_retrofit/bloc/movies_event.dart';
-import 'package:movie_bloc_retrofit/bloc/movies_state.dart';
+import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_bloc.dart';
+import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_event.dart';
+import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_state.dart';
 import 'package:movie_bloc_retrofit/ui/shimmer_movies.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/utils/card_movie_home.dart';
@@ -19,7 +19,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<MovieBloc>(context).add(LoadPopularMovie());
+    BlocProvider.of<MoviePopularBloc>(context).add(LoadPopularMovie());
   }
 
   @override
@@ -73,9 +73,9 @@ class _MovieMainPagesState extends State<MovieMainPages> {
         Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.width / 1.8,
-          child: BlocBuilder<MovieBloc, MoviesState>(
+          child: BlocBuilder<MoviePopularBloc, MoviesPopularState>(
             builder: (context, state) {
-              if (state is MoviesHasData) {
+              if (state is MoviesPopularHasData) {
                 return ListView.builder(
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
@@ -91,21 +91,21 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                         }
                       );
                     });
-              } else if (state is MoviesLoading) {
+              } else if (state is MoviesPopularLoading) {
                 return ShimmerMovies();
-              } else if (state is MoviesError) {
+              } else if (state is MoviesPopularError) {
                 return Container(
                   child: Center(
                     child: Text(state.errorMessage),
                   ),
                 );
-              } else if (state is MoviesNoData) {
+              } else if (state is MoviesPopularNoData) {
                 return Container(
                   child: Center(
                     child: Text(state.message),
                   ),
                 );
-              } else if (state is MoviesNoInternetConnection) {
+              } else if (state is MoviesPopularNoInternetConnection) {
                 return Container(
                   child: Center(
                     child: Text(state.message),
