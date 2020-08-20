@@ -10,4 +10,7 @@ abstract class ApiClient {
 
   @GET("movie/popular")
   Future<MovieResult> getMoviePopular(@Query("api_key") String apiKey);
+
+  @GET("movie/upcoming")
+  Future<MovieResult> getMovieUpComing(@Query("api_key") String apiKey);
 }

@@ -10,4 +10,7 @@ class ApiRepository extends BaseProvider{
   @override
   Future<MovieResult> getMoviePopular() => _apiProvider.getMoviePopular();
 
+  @override
+  Future<MovieResult> getMovieUpComing() => _apiProvider.getMovieUpComing();
+
 }

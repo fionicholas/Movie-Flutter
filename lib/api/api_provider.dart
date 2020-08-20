@@ -20,4 +20,9 @@ class ApiProvider extends BaseProvider {
     return _apiClient.getMoviePopular(apiKey);
   }
 
+  @override
+  Future<MovieResult> getMovieUpComing() {
+    return _apiClient.getMovieUpComing(apiKey);
+  }
+
 }
