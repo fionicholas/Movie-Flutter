@@ -7,7 +7,9 @@ import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_state.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_event.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_state.dart';
-import 'package:movie_bloc_retrofit/ui/shimmer_movies.dart';
+import 'package:movie_bloc_retrofit/ui/popular/movie_popular_pages.dart';
+import 'package:movie_bloc_retrofit/ui/upcoming/movie_upcoming_pages.dart';
+import 'package:movie_bloc_retrofit/ui/utils/LoadingIndicator.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/utils/card_movie_home.dart';
 
@@ -30,7 +32,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Movie Main"),
+        title: Text("Movie App"),
       ),
       body: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
@@ -69,7 +71,9 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                   Icons.arrow_forward,
                   size: 16.0,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, MoviePopularPages.routeName);
+                },
               )
             ],
           ),
@@ -84,7 +88,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: state.movieList.length,
+                    itemCount: state.movieList.length > 5 ? 5 : state.movieList.length,
                     itemBuilder: (BuildContext context, int index) {
                       MoviesItem movie = state.movieList[index];
                       return CardMovieHome(
@@ -96,7 +100,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                       );
                     });
               } else if (state is MoviesPopularLoading) {
-                return ShimmerMovies();
+                return LoadingIndicator();
               } else if (state is MoviesPopularError) {
                 return Container(
                   child: Center(
@@ -146,7 +150,9 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                   Icons.arrow_forward,
                   size: 16.0,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, MovieUpComingPages.routeName);
+                },
               )
             ],
           ),
@@ -161,7 +167,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: state.movieList.length,
+                    itemCount: state.movieList.length > 5 ? 5 : state.movieList.length,
                     itemBuilder: (BuildContext context, int index) {
                       MoviesItem movie = state.movieList[index];
                       return CardMovieHome(
@@ -173,7 +179,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                       );
                     });
               } else if (state is MoviesUpComingLoading) {
-                return ShimmerMovies();
+                return LoadingIndicator();
               } else if (state is MoviesUpComingError) {
                 return Container(
                   child: Center(
