@@ -5,6 +5,8 @@ import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_bloc.dart';
 import 'package:movie_bloc_retrofit/ui/home/movie_main_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_bloc_retrofit/ui/popular/movie_popular_pages.dart';
+import 'package:movie_bloc_retrofit/ui/upcoming/movie_upcoming_pages.dart';
 
 void main() {
   Bloc.observer = MovieBlocObserver();
@@ -21,8 +23,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:
-      MultiBlocProvider(
+      routes: {
+        MoviePopularPages.routeName: (context) => BlocProvider(
+              create: (context) {
+                return MoviePopularBloc(repository: ApiRepository());
+              },
+              child: MoviePopularPages(),
+            ),
+        MovieUpComingPages.routeName: (context) => BlocProvider(
+          create: (context) {
+            return MovieUpComingBloc(repository: ApiRepository());
+          },
+          child: MovieUpComingPages(),
+        ),
+      },
+      home: MultiBlocProvider(
         providers: [
           BlocProvider<MoviePopularBloc>(
             create: (context) {
