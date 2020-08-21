@@ -2,12 +2,13 @@ import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_event.dart';
 import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_state.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
-import 'package:movie_bloc_retrofit/ui/chip_genre_movies.dart';
-import 'package:movie_bloc_retrofit/ui/shimmer_movies.dart';
+import 'package:movie_bloc_retrofit/ui/utils/chip_genre_movies.dart';
+import 'package:movie_bloc_retrofit/ui/utils/shimmer_movies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MoviePopularPages extends StatefulWidget {
+  static const routeName = '/popular_movie';
   @override
   _MoviePopularPagesState createState() => _MoviePopularPagesState();
 }
