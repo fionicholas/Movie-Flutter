@@ -7,6 +7,7 @@ import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_state.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_event.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_state.dart';
+import 'package:movie_bloc_retrofit/ui/detail/detail_screen.dart';
 import 'package:movie_bloc_retrofit/ui/popular/movie_popular_pages.dart';
 import 'package:movie_bloc_retrofit/ui/upcoming/movie_upcoming_pages.dart';
 import 'package:movie_bloc_retrofit/ui/utils/LoadingIndicator.dart';
@@ -175,6 +176,10 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                           title: movie.title,
                           voteAverage: movie.voteAverage,
                           onTap: (){
+                            Navigator.pushNamed(
+                                context,
+                                DetailScreen.routeName, arguments: movie
+                            );
                           }
                       );
                     });
