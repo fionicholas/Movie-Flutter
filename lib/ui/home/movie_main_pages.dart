@@ -7,11 +7,11 @@ import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_state.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_event.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_state.dart';
+import 'package:movie_bloc_retrofit/model/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/detail/detail_screen.dart';
 import 'package:movie_bloc_retrofit/ui/popular/movie_popular_pages.dart';
 import 'package:movie_bloc_retrofit/ui/upcoming/movie_upcoming_pages.dart';
 import 'package:movie_bloc_retrofit/ui/utils/LoadingIndicator.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/utils/card_movie_home.dart';
 
 class MovieMainPages extends StatefulWidget {
@@ -33,7 +33,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Movie App"),
+        title: Text("Movie Catalogue"),
       ),
       body: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
@@ -97,6 +97,11 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                         title: movie.title,
                         voteAverage: movie.voteAverage,
                         onTap: (){
+                          Navigator.pushNamed(
+                              context,
+                              DetailScreen.routeName,
+                              arguments: movie
+                          );
                         }
                       );
                     });
