@@ -78,12 +78,15 @@ class _DetailScreenState extends State<DetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    CachedNetworkImage(
-                      height : MediaQuery.of(context).size.width / 2,
-                      imageUrl:
-                      "https://image.tmdb.org/t/p/w185/${args.posterPath}",
-                      placeholder: (context, url) => LoadingIndicator(),
-                      errorWidget: (context, url, error) => ErrorImage(),
+                    Hero(
+                      tag: 'poster-${args.id}',
+                      child: CachedNetworkImage(
+                        height : MediaQuery.of(context).size.width / 2,
+                        imageUrl:
+                        "https://image.tmdb.org/t/p/w185/${args.posterPath}",
+                        placeholder: (context, url) => LoadingIndicator(),
+                        errorWidget: (context, url, error) => ErrorImage(),
+                      ),
                     ),
                     SizedBox(width: 16.0),
                     Expanded(child: movieInformation),
@@ -106,6 +109,7 @@ class _DetailScreenState extends State<DetailScreen> {
               onPressed: () {
                 Navigator.pop(context);
               },
+              shape: StadiumBorder(),
               label: Text('Back', style: TextStyle(color: Colors.white),),
               icon: Icon(
                 Icons.arrow_back,
