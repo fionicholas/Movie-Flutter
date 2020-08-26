@@ -18,69 +18,79 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     final MoviesItem args = ModalRoute.of(context).settings.arguments;
+    var movieInformation = Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          args.title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(
+          height: 4.0,
+        ),
+        buildRatingBar(theme, context, args.voteAverage),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: args.genreIds
+                  .take(3)
+                  .map(buildGenreChip)
+                  .toList(),
+            ),
+          ),
+        ),
+      ],
+    );
     return Scaffold(
         body: SingleChildScrollView(
       physics: ClampingScrollPhysics(),
       child: Column(
         children: <Widget>[
-          CachedNetworkImage(
-            fit: BoxFit.cover,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.width / 2,
-            imageUrl:
-                "https://image.tmdb.org/t/p/original/${args.backdropPath}",
-            placeholder: (context, url) => LoadingIndicator(),
-            errorWidget: (context, url, error) => ErrorImage(),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
+          Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.width / 4),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.width / 1.8,
                   child: CachedNetworkImage(
-                    height: 90.0,
-                    width: 90.0,
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.width / 2,
                     imageUrl:
-                        "https://image.tmdb.org/t/p/w185/${args.posterPath}",
+                    "https://image.tmdb.org/t/p/original/${args.backdropPath}",
                     placeholder: (context, url) => LoadingIndicator(),
                     errorWidget: (context, url, error) => ErrorImage(),
                   ),
                 ),
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        args.title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 4.0,
-                      ),
-                      buildRatingBar(theme, context, args.voteAverage),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: args.genreIds
-                                .take(3)
-                                .map(buildGenreChip)
-                                .toList(),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+              ),
+              Positioned(
+                bottom: 0.0,
+                left: 16.0,
+                right: 16.0,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CachedNetworkImage(
+                      height : MediaQuery.of(context).size.width / 2,
+                      imageUrl:
+                      "https://image.tmdb.org/t/p/w185/${args.posterPath}",
+                      placeholder: (context, url) => LoadingIndicator(),
+                      errorWidget: (context, url, error) => ErrorImage(),
+                    ),
+                    SizedBox(width: 16.0),
+                    Expanded(child: movieInformation),
+                  ],
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
