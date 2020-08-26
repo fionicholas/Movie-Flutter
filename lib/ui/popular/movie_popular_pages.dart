@@ -73,7 +73,7 @@ class BuildList extends StatelessWidget {
                       arguments: movies);
                 },
                 child: Card(
-                  elevation: 10.0,
+                  elevation: 4.0,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -81,8 +81,11 @@ class BuildList extends StatelessWidget {
                         flex: 1,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.network(
-                              'https://image.tmdb.org/t/p/w185/${movies.posterPath}'),
+                          child: Hero(
+                            tag: 'poster-${movies.id}',
+                            child: Image.network(
+                                'https://image.tmdb.org/t/p/w185/${movies.posterPath}'),
+                          ),
                         ),
                       ),
                       Expanded(
@@ -115,7 +118,7 @@ class BuildList extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(
                                   bottom: 8.0, right: 8.0),
-                              child: Text(movies.overview.substring(0, 100)),
+                              child: Text(movies.overview, maxLines : 3 , overflow: TextOverflow.ellipsis,),
                             ),
                           ],
                         ),
