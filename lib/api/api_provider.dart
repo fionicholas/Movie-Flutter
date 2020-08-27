@@ -8,7 +8,7 @@ class ApiProvider extends BaseProvider {
   Dio _dio = Dio();
   ApiClient _apiClient;
 
-  var apiKey = "1b5c4f231f6dfe2b546cc12df8af1949";
+  var apiKey = "PASTE_YOUR_API_KEY";
 
   ApiProvider() {
     _dio = Dio();
