@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="movie_bloc_retrofit"
+        android:label="Movie Catalogue"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
