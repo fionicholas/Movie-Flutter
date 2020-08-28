@@ -55,7 +55,7 @@ class _DetailScreenState extends State<DetailScreen> {
           Stack(
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.width / 4),
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.width / 3),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.width / 1.8,
