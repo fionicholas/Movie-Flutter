@@ -9,6 +9,7 @@ import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_event.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_state.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/detail/detail_screen.dart';
+import 'package:movie_bloc_retrofit/ui/detail/details_screen.dart';
 import 'package:movie_bloc_retrofit/ui/popular/movie_popular_pages.dart';
 import 'package:movie_bloc_retrofit/ui/upcoming/movie_upcoming_pages.dart';
 import 'package:movie_bloc_retrofit/ui/utils/LoadingIndicator.dart';
@@ -99,7 +100,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
                         onTap: (){
                           Navigator.pushNamed(
                               context,
-                              DetailScreen.routeName,
+                              DetailsScreen.routeName,
                               arguments: movie
                           );
                         }
