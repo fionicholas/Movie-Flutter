@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:movie_bloc_retrofit/model/crew.dart';
 import 'package:movie_bloc_retrofit/model/movie_result.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -13,4 +14,7 @@ abstract class ApiClient {
 
   @GET("movie/upcoming")
   Future<MovieResult> getMovieUpComing(@Query("api_key") String apiKey);
+
+  @GET("movie/{id}/credits")
+  Future<ResultCrew> getCrewMovie(@Path("id")String id, @Query("api_key") String apiKey);
 }
