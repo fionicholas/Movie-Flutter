@@ -38,6 +38,12 @@ class MoviesItem extends Equatable {
 	@JsonKey(name: 'first_air_date')
 	final String tvRelease;
 
+	@JsonKey(name: 'vote_count')
+	final int voteCount;
+
+	@JsonKey(name: 'original_language')
+	final String originalLanguage;
+
 	MoviesItem(
       this.id,
       this.title,
@@ -49,7 +55,10 @@ class MoviesItem extends Equatable {
       this.posterPath,
 			this.backdropPath,
       this.tvName,
-      this.tvRelease);
+      this.tvRelease,
+      this.voteCount,
+      this.originalLanguage
+			);
 
 	@override
   List<Object> get props => [
@@ -64,6 +73,8 @@ class MoviesItem extends Equatable {
 		backdropPath,
 		tvName,
 		tvRelease,
+		voteCount,
+		originalLanguage,
   ];
 
 	factory MoviesItem.fromJson(Map<String, dynamic> json) => _$MoviesItemFromJson(json);

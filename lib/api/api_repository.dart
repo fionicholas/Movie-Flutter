@@ -1,6 +1,7 @@
 
 import 'package:movie_bloc_retrofit/api/api_provider.dart';
 import 'package:movie_bloc_retrofit/api/base_provider.dart';
+import 'package:movie_bloc_retrofit/model/crew.dart';
 import 'package:movie_bloc_retrofit/model/movie_result.dart';
 
 class ApiRepository extends BaseProvider{
@@ -12,5 +13,8 @@ class ApiRepository extends BaseProvider{
 
   @override
   Future<MovieResult> getMovieUpComing() => _apiProvider.getMovieUpComing();
+
+  @override
+  Future<ResultCrew> getCrewMovie(String id) => _apiProvider.getCrewMovie(id);
 
 }

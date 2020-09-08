@@ -53,4 +53,24 @@ class _ApiClient implements ApiClient {
     final value = MovieResult.fromJson(_result.data);
     return value;
   }
+
+  @override
+  getCrewMovie(id, apiKey) async {
+    ArgumentError.checkNotNull(id, 'id');
+    ArgumentError.checkNotNull(apiKey, 'apiKey');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final _data = <String, dynamic>{};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        'movie/$id/credits',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = ResultCrew.fromJson(_result.data);
+    return value;
+  }
 }

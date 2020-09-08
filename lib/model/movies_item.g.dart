@@ -19,6 +19,8 @@ MoviesItem _$MoviesItemFromJson(Map<String, dynamic> json) {
     json['backdrop_path'] as String,
     json['original_name'] as String,
     json['first_air_date'] as String,
+    json['vote_count'] as int,
+    json['original_language'] as String,
   );
 }
 
@@ -35,4 +37,6 @@ Map<String, dynamic> _$MoviesItemToJson(MoviesItem instance) =>
       'backdrop_path': instance.backdropPath,
       'original_name': instance.tvName,
       'first_air_date': instance.tvRelease,
+      'vote_count': instance.voteCount,
+      'original_language': instance.originalLanguage,
     };
