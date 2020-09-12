@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
-import 'package:movie_bloc_retrofit/ui/utils/ErrorImage.dart';
-import 'package:movie_bloc_retrofit/ui/utils/LoadingIndicator.dart';
-import 'package:movie_bloc_retrofit/ui/utils/chip_genre_movies.dart';
-import 'package:movie_bloc_retrofit/ui/utils/rating_bar.dart';
+import 'package:movie_bloc_retrofit/ui/utils/components/ErrorImage.dart';
+import 'package:movie_bloc_retrofit/ui/utils/components/LoadingIndicator.dart';
+import 'package:movie_bloc_retrofit/ui/utils/components/chip_genre_movies.dart';
+import 'package:movie_bloc_retrofit/ui/utils/components/rating_bar.dart';
 
 class DetailScreen extends StatefulWidget {
   static const routeName = '/detail_movie';
