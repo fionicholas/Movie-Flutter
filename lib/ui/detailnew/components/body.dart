@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
-import 'package:movie_bloc_retrofit/ui/details/components/backdrop_rating.dart';
-import 'package:movie_bloc_retrofit/ui/details/components/cast_crew.dart';
-import 'package:movie_bloc_retrofit/ui/details/components/overview.dart';
-import 'package:movie_bloc_retrofit/ui/details/components/title_date_favorite.dart';
+import 'package:movie_bloc_retrofit/ui/detailnew/components/backdrop_rating.dart';
+import 'package:movie_bloc_retrofit/ui/detailnew/components/cast_crew.dart';
+import 'package:movie_bloc_retrofit/ui/detailnew/components/overview.dart';
+import 'package:movie_bloc_retrofit/ui/detailnew/components/title_date_favorite.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/chip_genre_movies.dart';
 
 class Body extends StatelessWidget {

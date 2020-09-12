@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_event.dart';
 import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_state.dart';
-import 'package:movie_bloc_retrofit/ui/details/details_screen.dart';
+import 'package:movie_bloc_retrofit/ui/detailnew/detail_new_screen.dart';
 import 'package:movie_bloc_retrofit/ui/popular/movie_popular_pages.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/LoadingIndicator.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/card_movie_home.dart';
@@ -57,7 +57,7 @@ class ListMoviePopular extends StatelessWidget {
                           onTap: (){
                             Navigator.pushNamed(
                                 context,
-                                DetailsScreen.routeName,
+                                DetailNewScreen.routeName,
                                 arguments: movie
                             );
                           }

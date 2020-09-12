@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_event.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_state.dart';
-import 'package:movie_bloc_retrofit/ui/details/details_screen.dart';
+import 'package:movie_bloc_retrofit/ui/detailnew/detail_new_screen.dart';
 import 'package:movie_bloc_retrofit/ui/upcoming/movie_upcoming_pages.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/LoadingIndicator.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/card_movie_home.dart';
@@ -58,7 +58,7 @@ class ListMovieUpComing extends StatelessWidget {
                           onTap: (){
                             Navigator.pushNamed(
                                 context,
-                                DetailsScreen.routeName, arguments: movie
+                                DetailNewScreen.routeName, arguments: movie
                             );
                           }
                       );

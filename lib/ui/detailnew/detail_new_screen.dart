@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_bloc_retrofit/model/movies_item.dart';
-import 'package:movie_bloc_retrofit/ui/details/components/body.dart';
+import 'package:movie_bloc_retrofit/ui/detailnew/components/body.dart';
 
-class DetailsScreen extends StatelessWidget {
-  static const routeName = '/details_movie';
+class DetailNewScreen extends StatelessWidget {
+  static const routeName = '/detail_new_movie';
   @override
   Widget build(BuildContext context) {
     final MoviesItem movie = ModalRoute.of(context).settings.arguments;
