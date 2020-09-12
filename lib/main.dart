@@ -1,8 +1,10 @@
 import 'package:movie_bloc_retrofit/api/api_repository.dart';
+import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/movie_bloc_observer.dart';
 import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_bloc.dart';
 import 'package:movie_bloc_retrofit/ui/detail/detail_screen.dart';
+import 'package:movie_bloc_retrofit/ui/details/details_screen.dart';
 import 'package:movie_bloc_retrofit/ui/home/movie_main_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Movie App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -38,6 +41,12 @@ class MyApp extends StatelessWidget {
           child: MovieUpComingPages(),
         ),
         DetailScreen.routeName : (context) => DetailScreen(),
+        DetailsScreen.routeName : (context) => BlocProvider(
+          create: (context){
+            return CrewMovieBloc(repository: ApiRepository());
+          },
+          child: DetailsScreen(),
+        ),
       },
       home: MultiBlocProvider(
         providers: [
