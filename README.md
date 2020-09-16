@@ -1,6 +1,12 @@
-# Movie BLoC Retrofit
+# Movie Flutter
 
-Simple Movie App with BLOC + Retrofit + DIO
+Simple Movie App - Flutter
+
+## Tech Stack
+- Dart
+- BLoc
+- DIO
+- Retrofit
 
 ## Screenshots
 <pre>
