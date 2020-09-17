@@ -1,41 +1,42 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_bloc_retrofit/api/base_provider.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_event.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_state.dart';
-
+import 'package:movie_bloc_retrofit/data/base_provider.dart';
 
 class MovieUpComingBloc extends Bloc<MoviesUpComingEvent, MoviesUpComingState> {
   final BaseProvider repository;
 
-  MovieUpComingBloc({@required this.repository}) : super(InitialMoviesUpComingState());
+  MovieUpComingBloc({@required this.repository})
+      : super(InitialMoviesUpComingState());
 
   @override
-  Stream<MoviesUpComingState> mapEventToState(MoviesUpComingEvent event) async* {
-    if(event is LoadUpComingMovie){
+  Stream<MoviesUpComingState> mapEventToState(
+      MoviesUpComingEvent event) async* {
+    if (event is LoadUpComingMovie) {
       yield* _mapLoadUpComingMovieToState();
     }
   }
 
   Stream<MoviesUpComingState> _mapLoadUpComingMovieToState() async* {
-    try{
+    try {
       yield MoviesUpComingLoading();
       var movies = await repository.getMovieUpComing();
-      if(movies?.results?.isEmpty ?? true){
+      if (movies?.results?.isEmpty ?? true) {
         yield MoviesUpComingNoData("Movies Not Found");
-      }else {
+      } else {
         yield MoviesUpComingHasData(movies.results);
       }
     } on DioError catch (e) {
-      if(e.type == DioErrorType.CONNECT_TIMEOUT || e.type == DioErrorType.RECEIVE_TIMEOUT) {
+      if (e.type == DioErrorType.CONNECT_TIMEOUT ||
+          e.type == DioErrorType.RECEIVE_TIMEOUT) {
         yield MoviesUpComingNoInternetConnection("No Internet Connection");
-      }else if(e.type == DioErrorType.DEFAULT) {
+      } else if (e.type == DioErrorType.DEFAULT) {
         yield MoviesUpComingNoInternetConnection("No Internet Connection");
-      }else {
+      } else {
         yield MoviesUpComingError(e.toString());
       }
     }
   }
-
 }

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_bloc_retrofit/api/base_provider.dart';
 import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_event.dart';
 import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_state.dart';
+import 'package:movie_bloc_retrofit/data/base_provider.dart';
 
 class CrewMovieBloc extends Bloc<CrewMovieEvent, CrewMovieState> {
   final BaseProvider repository;
@@ -12,29 +12,29 @@ class CrewMovieBloc extends Bloc<CrewMovieEvent, CrewMovieState> {
 
   @override
   Stream<CrewMovieState> mapEventToState(CrewMovieEvent event) async* {
-    if(event is LoadCrewMovie){
+    if (event is LoadCrewMovie) {
       yield* _mapLoadCrewMovieToState(event.id);
     }
   }
 
   Stream<CrewMovieState> _mapLoadCrewMovieToState(String id) async* {
-    try{
+    try {
       yield CrewMovieLoading();
       var crews = await repository.getCrewMovie(id);
-      if(crews.crew.isEmpty){
+      if (crews.crew.isEmpty) {
         yield CrewMovieNoData("Crew Not Found");
-      }else {
+      } else {
         yield CrewMovieHasData(crews);
       }
     } on DioError catch (e) {
-      if(e.type == DioErrorType.CONNECT_TIMEOUT || e.type == DioErrorType.RECEIVE_TIMEOUT) {
+      if (e.type == DioErrorType.CONNECT_TIMEOUT ||
+          e.type == DioErrorType.RECEIVE_TIMEOUT) {
         yield CrewMovieNoInternetConnection("No Internet Connection");
-      }else if(e.type == DioErrorType.DEFAULT) {
+      } else if (e.type == DioErrorType.DEFAULT) {
         yield CrewMovieNoInternetConnection("No Internet Connection");
-      }else {
+      } else {
         yield CrewMovieError(e.toString());
       }
     }
   }
-
 }

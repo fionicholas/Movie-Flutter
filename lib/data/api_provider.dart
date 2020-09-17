@@ -1,7 +1,7 @@
 
 import 'package:dio/dio.dart';
-import 'package:movie_bloc_retrofit/api/api_client.dart';
-import 'package:movie_bloc_retrofit/api/base_provider.dart';
+import 'package:movie_bloc_retrofit/data/api_client.dart';
+import 'package:movie_bloc_retrofit/data/base_provider.dart';
 import 'package:movie_bloc_retrofit/model/crew.dart';
 import 'package:movie_bloc_retrofit/model/movie_result.dart';
 
