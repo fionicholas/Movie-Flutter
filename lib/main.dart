@@ -2,7 +2,7 @@ import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/movie_bloc_observer.dart';
 import 'package:movie_bloc_retrofit/bloc/popular/movies_popular_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_bloc.dart';
-import 'package:movie_bloc_retrofit/data/api_repository.dart';
+import 'package:movie_bloc_retrofit/data/movie_repository.dart';
 import 'package:movie_bloc_retrofit/ui/detail/detail_screen.dart';
 import 'package:movie_bloc_retrofit/ui/detailnew/detail_new_screen.dart';
 import 'package:movie_bloc_retrofit/ui/home/movie_main_pages.dart';
@@ -30,20 +30,20 @@ class MyApp extends StatelessWidget {
       routes: {
         MoviePopularPages.routeName: (context) => BlocProvider(
               create: (context) {
-                return MoviePopularBloc(repository: ApiRepository());
+                return MoviePopularBloc(repository: MovieRepository());
               },
               child: MoviePopularPages(),
             ),
         MovieUpComingPages.routeName: (context) => BlocProvider(
           create: (context) {
-            return MovieUpComingBloc(repository: ApiRepository());
+            return MovieUpComingBloc(repository: MovieRepository());
           },
           child: MovieUpComingPages(),
         ),
         DetailScreen.routeName : (context) => DetailScreen(),
         DetailNewScreen.routeName : (context) => BlocProvider(
           create: (context){
-            return CrewMovieBloc(repository: ApiRepository());
+            return CrewMovieBloc(repository: MovieRepository());
           },
           child: DetailNewScreen(),
         ),
@@ -52,12 +52,12 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<MoviePopularBloc>(
             create: (context) {
-              return MoviePopularBloc(repository: ApiRepository());
+              return MoviePopularBloc(repository: MovieRepository());
             },
           ),
           BlocProvider<MovieUpComingBloc>(
             create: (context) {
-              return MovieUpComingBloc(repository: ApiRepository());
+              return MovieUpComingBloc(repository: MovieRepository());
             },
           ),
         ],

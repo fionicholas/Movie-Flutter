@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_client.dart';
+part of 'movie_api_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
-class _ApiClient implements ApiClient {
-  _ApiClient(this._dio, {this.baseUrl}) {
+class _MovieApiClient implements MovieApiClient {
+  _MovieApiClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
     this.baseUrl ??= 'https://api.themoviedb.org/3/';
   }

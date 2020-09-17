@@ -1,19 +1,19 @@
 
 import 'package:dio/dio.dart';
-import 'package:movie_bloc_retrofit/data/api_client.dart';
-import 'package:movie_bloc_retrofit/data/base_provider.dart';
+import 'package:movie_bloc_retrofit/data/remote/movie_api_client.dart';
+import 'package:movie_bloc_retrofit/data/movie_data_source.dart';
 import 'package:movie_bloc_retrofit/model/crew.dart';
 import 'package:movie_bloc_retrofit/model/movie_result.dart';
 
-class ApiProvider extends BaseProvider {
+class MovieRepository extends MovieDataSource {
   Dio _dio = Dio();
-  ApiClient _apiClient;
+  MovieApiClient _apiClient;
 
   var apiKey = "PASTE_YOUR_API_KEY";
 
-  ApiProvider() {
+  MovieRepository() {
     _dio = Dio();
-    _apiClient = ApiClient(_dio);
+    _apiClient = MovieApiClient(_dio);
   }
 
   @override

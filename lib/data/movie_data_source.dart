@@ -1,7 +1,7 @@
 import 'package:movie_bloc_retrofit/model/movie_result.dart';
 import 'package:movie_bloc_retrofit/model/crew.dart';
 
-abstract class BaseProvider {
+abstract class MovieDataSource {
   Future<MovieResult> getMoviePopular();
   Future<MovieResult> getMovieUpComing();
   Future<ResultCrew> getCrewMovie(String id);
