@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_event.dart';
 import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_state.dart';
-import 'package:movie_bloc_retrofit/data/base_provider.dart';
+import 'package:movie_bloc_retrofit/data/movie_data_source.dart';
 
 class CrewMovieBloc extends Bloc<CrewMovieEvent, CrewMovieState> {
-  final BaseProvider repository;
+  final MovieDataSource repository;
 
   CrewMovieBloc({@required this.repository}) : super(InitialCrewMovieState());
 
