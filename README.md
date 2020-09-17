@@ -5,6 +5,9 @@ Simple Movie App - Flutter
 ## Tech Stack
 - Dart
 - BLoc
+- Hero Animation
+- Shimmer
+- JSON Serializable
 - DIO
 - Retrofit
 
