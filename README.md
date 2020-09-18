@@ -15,3 +15,11 @@ Simple Movie App - Flutter
 <pre>
 <img src="https://github.com/fionicholas/Movie-BLOC-Retrofit/blob/master/screenshot/movie.png" alt="ss-movie-home" width="330" height="500" /><img src="https://github.com/fionicholas/Movie-BLOC-Retrofit/blob/master/screenshot/movie_popular_all.png" alt="ss-movie-list" width="330" height="500" /><img src="https://github.com/fionicholas/Movie-BLOC-Retrofit/blob/master/screenshot/new_detail_movie.png" alt="ss-new-movie-detail" width="330" height="500" /><img src="https://github.com/fionicholas/Movie-BLOC-Retrofit/blob/master/screenshot/movie_detail.png" alt="ss-movie-detail" width="330" height="500" />
 </pre>
+
+## Todo
+* [x] New Detail Movies
+* [ ] Favorite Movies
+* [ ] Infinite Scroll
+
+## Get Started
+You can get api_key on https://www.themoviedb.org/ and paste into `var apiKey = "PASTE_YOUR_API_KEY"` on file `movie_repository.dart`
