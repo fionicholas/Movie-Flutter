@@ -7,7 +7,7 @@ import 'package:movie_bloc_retrofit/ui/detailnew/detail_new_screen.dart';
 import 'package:movie_bloc_retrofit/ui/popular/movie_popular_pages.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/LoadingIndicator.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/card_movie_home.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 
 class ListMoviePopular extends StatelessWidget {
 
@@ -21,9 +21,12 @@ class ListMoviePopular extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(
-                'Popular Movie',
-                style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal :8.0),
+                child: Text(
+                  'Popular Movie',
+                  style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold),
+                ),
               ),
               IconButton(
                 icon: Icon(
