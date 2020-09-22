@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/detailnew/components/body.dart';
 
 class DetailNewScreen extends StatelessWidget {
@@ -7,8 +7,10 @@ class DetailNewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MoviesItem movie = ModalRoute.of(context).settings.arguments;
+    final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
     return Scaffold(
-      body: Body(movie: movie),
+      key: scaffoldKey,
+      body: Body(movie: movie, scaffoldKey: scaffoldKey),
     );
   }
 }

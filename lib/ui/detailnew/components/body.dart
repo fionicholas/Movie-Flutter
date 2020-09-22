@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/detailnew/components/backdrop_rating.dart';
 import 'package:movie_bloc_retrofit/ui/detailnew/components/cast_crew.dart';
 import 'package:movie_bloc_retrofit/ui/detailnew/components/overview.dart';
 import 'package:movie_bloc_retrofit/ui/detailnew/components/title_date_favorite.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/chip_genre_movies.dart';
 
-class Body extends StatelessWidget {
-  const Body({Key key, @required this.movie}) : super(key: key);
+class Body extends StatefulWidget {
+  const Body({Key key, @required this.movie, this.scaffoldKey}) : super(key: key);
 
   final MoviesItem movie;
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -18,15 +24,15 @@ class Body extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BackDropRating(size: size, movie: movie),
+          BackDropRating(size: size, movie: widget.movie),
           SizedBox(height: 20,),
-          TitleReleaseDateAndFavorite(moviesItem : movie),
+          TitleReleaseDateAndFavorite(moviesItem : widget.movie, scaffoldKey: widget.scaffoldKey,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: movie.genreIds
+                children: widget.movie.genreIds
                     .take(3)
                     .map(buildGenreChip)
                     .toList(),
@@ -34,8 +40,8 @@ class Body extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20,),
-          Overview(moviesItem: movie,),
-          CastCrew(id: movie.id.toString(),)
+          Overview(moviesItem: widget.movie,),
+          CastCrew(id: widget.movie.id.toString(),)
         ],
       ),
     );
