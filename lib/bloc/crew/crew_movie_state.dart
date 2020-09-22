@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movie_bloc_retrofit/model/crew.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/crew.dart';
 
 abstract class CrewMovieState extends Equatable {
   const CrewMovieState();

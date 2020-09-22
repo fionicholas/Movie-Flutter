@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 
 class Overview extends StatelessWidget {
   const Overview({Key key, @required this.moviesItem}) : super(key: key);

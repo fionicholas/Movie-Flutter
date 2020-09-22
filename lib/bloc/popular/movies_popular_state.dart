@@ -1,4 +1,4 @@
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class MoviesPopularState extends Equatable {

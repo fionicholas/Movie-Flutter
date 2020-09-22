@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_event.dart';
 import 'package:movie_bloc_retrofit/bloc/upcoming/movies_upcoming_state.dart';
-import 'package:movie_bloc_retrofit/data/movie_data_source.dart';
+import 'package:movie_bloc_retrofit/data/movies/movie_data_source.dart';
 
 class MovieUpComingBloc extends Bloc<MoviesUpComingEvent, MoviesUpComingState> {
   final MovieDataSource repository;

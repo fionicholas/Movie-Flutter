@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_bloc.dart';
 import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_event.dart';
 import 'package:movie_bloc_retrofit/bloc/crew/crew_movie_state.dart';
-import 'package:movie_bloc_retrofit/model/crew.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/crew.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/ErrorImage.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/LoadingIndicator.dart';
 import 'package:movie_bloc_retrofit/ui/utils/ext/common_ext.dart';
