@@ -42,7 +42,7 @@ class _MovieMainPagesState extends State<MovieMainPages> {
       ),
       body: Center(child: _showPages,),
       bottomNavigationBar: CurvedNavigationBar(
-        height: 50,
+        height: 60,
         backgroundColor: Colors.white,
         color: Colors.blue,
         items: <Widget>[

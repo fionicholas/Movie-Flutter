@@ -8,6 +8,7 @@ import 'package:movie_bloc_retrofit/ui/detailnew/detail_new_screen.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/ErrorImage.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/LoadingIndicator.dart';
 import 'package:movie_bloc_retrofit/ui/utils/ext/common_ext.dart';
+import 'package:movie_bloc_retrofit/ui/utils/components/rating_bar.dart';
 
 class CardListFavorite extends StatefulWidget {
   const CardListFavorite({Key key, this.listMovieFavorite}) : super(key: key);
@@ -21,6 +22,7 @@ class CardListFavorite extends StatefulWidget {
 class _CardListFavoriteState extends State<CardListFavorite> {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       child: ListView.builder(
           itemCount: widget.listMovieFavorite.length,
@@ -74,7 +76,7 @@ class _CardListFavoriteState extends State<CardListFavorite> {
                                   top: 8.0, right: 16.0, bottom: 8.0),
                               child: Row(
                                 children: [
-                                  Icon( Icons.star, color: Colors.yellow,),
+                                  buildRatingBar(theme, context, double.parse(movies.voteAverage)),
                                   SizedBox(width: 4,),
                                   Text(movies.voteAverage.toString())
                                 ],
