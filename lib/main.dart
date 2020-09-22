@@ -57,6 +57,12 @@ class MyApp extends StatelessWidget {
                         moviesFavoriteRepository: MoviesFavoriteRepository());
                   },
                 ),
+                BlocProvider<ListMoviesFavoriteBloc>(
+                  create: (context) {
+                    return ListMoviesFavoriteBloc(
+                        moviesFavoriteRepository: MoviesFavoriteRepository());
+                  },
+                ),
               ],
               child: DetailNewScreen(),
             ),
