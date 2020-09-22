@@ -34,7 +34,6 @@ class _TitleReleaseDateAndFavoriteState
 
   bool _isFavorite = false;
 
-
   @override
   Widget build(BuildContext context) {
     context.bloc<MoviesFavoriteBloc>().add(GetMoviesFavoriteById(
@@ -51,10 +50,7 @@ class _TitleReleaseDateAndFavoriteState
               children: [
                 Text(
                   widget.moviesItem.title,
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .headline5,
+                  style: Theme.of(context).textTheme.headline5,
                 ),
                 SizedBox(height: 8),
                 Text(
@@ -71,23 +67,35 @@ class _TitleReleaseDateAndFavoriteState
             child: SizedBox(
                 width: 64,
                 height: 64,
-                child: BlocBuilder<MoviesFavoriteBloc, MoviesFavoriteState>(
-                    builder: (context, state) {
-                      if (state is MoviesFavoriteHasData) {
-                        print('BUBUBUBUB ${state.moviesFavoriteEntity}');
-                        _isFavorite = state.isFavorite;
-                        return _buildButtonFavorite();
-                      } else if (state is MoviesFavoriteError) {
-                        return Container(
-                          child: Text(state.errorMessage),
-                        );
+                child: BlocListener<MoviesFavoriteBloc, MoviesFavoriteState>(
+                  listenWhen: (previousState, state) {
+                    return state is MoviesFavoriteSuccess;
+                  },
+                  listener: (context, state) {
+                    context.bloc<MoviesFavoriteBloc>().add(
+                        GetMoviesFavoriteById(
+                            moviesFavoriteEntity:
+                                widget.moviesItem.toFavoriteMovie()));
+                  },
+                  child: BlocBuilder<MoviesFavoriteBloc, MoviesFavoriteState>(
+                      builder: (context, state) {
+                    if (state is MoviesFavoriteHasData) {
+                      if (state.moviesFavoriteEntity?.id != null) {
+                        _isFavorite = true;
+                      } else {
+                        _isFavorite = false;
                       }
+                      return _buildButtonFavorite();
+                    } else if (state is MoviesFavoriteError) {
                       return Container(
-                        child: Text(""),
+                        child: Text(state.errorMessage),
                       );
                     }
-                )
-            ),
+                    return Container(
+                      child: Text(""),
+                    );
+                  }),
+                )),
           )
         ],
       ),
@@ -97,15 +105,13 @@ class _TitleReleaseDateAndFavoriteState
   Widget _buildButtonFavorite() {
     if (_isFavorite) {
       return FlatButton(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           color: Colors.pinkAccent,
           onPressed: () {
-            print('UNFAVORITED');
             setState(() => _isFavorite = false);
-            print('UNFAVORITED $_isFavorite');
-            widget.scaffoldKey.currentState.showSnackBar(
-                snackBar('Removed from Favorite!'));
+            widget.scaffoldKey.currentState
+                .showSnackBar(snackBar('Removed from Favorite!'));
             context.bloc<MoviesFavoriteBloc>().add(DeleteMoviesFavorite(
                 moviesFavoriteEntity: widget.moviesItem.toFavoriteMovie()));
           },
@@ -113,19 +119,16 @@ class _TitleReleaseDateAndFavoriteState
             Icons.favorite,
             size: 28,
             color: Colors.white,
-          )
-      );
+          ));
     } else {
       return FlatButton(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           color: Colors.pinkAccent,
           onPressed: () {
-            print('FAVORITED');
             setState(() => _isFavorite = true);
-            print('FAVORITED $_isFavorite');
-            widget.scaffoldKey.currentState.showSnackBar(
-                snackBar('Add from Favorite!'));
+            widget.scaffoldKey.currentState
+                .showSnackBar(snackBar('Add To Favorite!'));
             context.bloc<MoviesFavoriteBloc>().add(AddMoviesFavorite(
                 moviesFavoriteEntity: widget.moviesItem.toFavoriteMovie()));
           },
@@ -133,8 +136,7 @@ class _TitleReleaseDateAndFavoriteState
             Icons.favorite_border,
             size: 28,
             color: Colors.white,
-          )
-      );
+          ));
     }
   }
 }

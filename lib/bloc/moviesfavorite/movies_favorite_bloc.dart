@@ -36,6 +36,9 @@ class MoviesFavoriteBloc
       try {
         await moviesFavoriteRepository
             .deleteMoviesFavorite(event.moviesFavoriteEntity?.id);
+        yield MoviesFavoriteSuccess(
+            successMessage:
+            event.moviesFavoriteEntity.title + ' removed from favorite');
       } catch (e) {
         yield MoviesFavoriteError(e.toString());
       }
