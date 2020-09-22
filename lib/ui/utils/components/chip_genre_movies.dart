@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../model/genres.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/genres.dart';
 
 Widget buildGenreChip(int id) {
   return Container(

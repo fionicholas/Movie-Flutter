@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/detail/detail_screen.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/chip_genre_movies.dart';
 

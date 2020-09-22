@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/ErrorImage.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/LoadingIndicator.dart';
 import 'package:movie_bloc_retrofit/ui/utils/components/chip_genre_movies.dart';
