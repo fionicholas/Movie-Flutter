@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:movie_bloc_retrofit/model/crew.dart';
-import 'package:movie_bloc_retrofit/model/movie_result.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/crew.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movie_result.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'movie_api_client.g.dart';

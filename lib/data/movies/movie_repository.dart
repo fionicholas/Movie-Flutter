@@ -1,15 +1,16 @@
 
 import 'package:dio/dio.dart';
-import 'package:movie_bloc_retrofit/data/remote/movie_api_client.dart';
-import 'package:movie_bloc_retrofit/data/movie_data_source.dart';
-import 'package:movie_bloc_retrofit/model/crew.dart';
-import 'package:movie_bloc_retrofit/model/movie_result.dart';
+import 'package:movie_bloc_retrofit/data/movies/movie_data_source.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/movie_api_client.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/crew.dart';
+
+import 'remote/response/movie_result.dart';
 
 class MovieRepository extends MovieDataSource {
   Dio _dio = Dio();
   MovieApiClient _apiClient;
 
-  var apiKey = "PASTE_YOUR_API_KEY";
+  var apiKey = "1b5c4f231f6dfe2b546cc12df8af1949";
 
   MovieRepository() {
     _dio = Dio();

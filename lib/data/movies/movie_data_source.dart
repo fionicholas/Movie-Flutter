@@ -1,5 +1,5 @@
-import 'package:movie_bloc_retrofit/model/movie_result.dart';
-import 'package:movie_bloc_retrofit/model/crew.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movie_result.dart';
+import 'remote/response/crew.dart';
 
 abstract class MovieDataSource {
   Future<MovieResult> getMoviePopular();

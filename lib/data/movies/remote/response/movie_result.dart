@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movie_bloc_retrofit/model/movies_item.dart';
+import 'package:movie_bloc_retrofit/data/movies/remote/response/movies_item.dart';
 
 part 'movie_result.g.dart';
 
