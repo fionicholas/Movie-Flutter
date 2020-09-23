@@ -1,13 +1,17 @@
 # Movie Flutter
 
-Simple Movie App - Flutter
+- Popular Movie List
+- UpComing Movie List
+- Detail Movie
+- Favorite Movies
 
 ## Tech Stack
 - Dart
-- BLoc
+- Flutter BLoC
 - Hero Animation
 - Shimmer
 - JSON Serializable
+- Sqflite
 - DIO
 - Retrofit
 
@@ -18,8 +22,14 @@ Simple Movie App - Flutter
 
 ## Todo
 * [x] New Detail Movies
-* [ ] Favorite Movies
+* [x] Favorite Movies
 * [ ] Infinite Scroll
 
 ## Get Started
-You can get api_key on https://www.themoviedb.org/ and paste into `var apiKey = "PASTE_YOUR_API_KEY"` on file `movie_repository.dart`
+1. Get api_key from https://www.themoviedb.org/ and paste into `var apiKey = "PASTE_YOUR_API_KEY"` on file `movie_repository.dart`
+
+2. Generate file *.g.dart, you can use this command on terminal :
+
+```
+flutter pub run build_runner build
+```
