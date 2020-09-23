@@ -10,7 +10,7 @@ class MovieRepository extends MovieDataSource {
   Dio _dio = Dio();
   MovieApiClient _apiClient;
 
-  var apiKey = "1b5c4f231f6dfe2b546cc12df8af1949";
+  var apiKey = "PASTE_YOUR_API_KEY";
 
   MovieRepository() {
     _dio = Dio();
