@@ -33,3 +33,8 @@
 ```
 flutter pub run build_runner build
 ```
+
+## Don't Forget to :
+
+- Star the Repository [⭐](https://github.com/fionicholas/Movie-Flutter)
+- Follow [My Github Account](https://github.com/fionicholas/)
