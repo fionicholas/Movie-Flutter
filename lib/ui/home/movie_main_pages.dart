@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_bloc_retrofit/ui/home/body_favorite.dart';
-import 'package:movie_bloc_retrofit/ui/home/body_movie.dart';
+import 'package:movie_bloc_retrofit/ui/favorite/movies_favorite_screen.dart';
+import 'package:movie_bloc_retrofit/ui/home/movie_home_screen.dart';
 
 class MovieMainPages extends StatefulWidget {
   @override
@@ -11,10 +11,10 @@ class MovieMainPages extends StatefulWidget {
 
 class _MovieMainPagesState extends State<MovieMainPages> {
 
-  final BodyMovie _movie = BodyMovie();
-  final BodyFavorite _favorite = BodyFavorite();
+  final MovieHomeScreen _movie = MovieHomeScreen();
+  final MoviesFavoriteScreen _favorite = MoviesFavoriteScreen();
 
-  Widget _showPages = new BodyMovie();
+  Widget _showPages = new MovieHomeScreen();
 
   Widget _pageChooser(int page) {
     switch (page) {
@@ -37,9 +37,6 @@ class _MovieMainPagesState extends State<MovieMainPages> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Movie Catalogue"),
-      ),
       body: Center(child: _showPages,),
       bottomNavigationBar: CurvedNavigationBar(
         height: 60,
