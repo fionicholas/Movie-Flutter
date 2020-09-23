@@ -11,9 +11,6 @@ class BodyMovie extends StatelessWidget {
           child: Column(
             children: <Widget> [
               ListMoviePopular(),
-              SizedBox(
-                height: 8.0,
-              ),
               ListMovieUpComing(),
               SizedBox(
                 height: 16.0,
