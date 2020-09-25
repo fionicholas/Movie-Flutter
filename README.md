@@ -1,11 +1,12 @@
 # Movie Flutter
 
+<img src="https://media2.giphy.com/media/6TJ8QVG6IoUaw6RdZl/giphy.gif" alt="movie-flutter"/>
+
+## Features
 - Popular Movie List
 - UpComing Movie List
 - Detail Movie
 - Favorite Movies
-
-<img src="https://media2.giphy.com/media/6TJ8QVG6IoUaw6RdZl/giphy.gif" alt="movie-flutter"/>
 
 ## Tech Stack
 - Dart
