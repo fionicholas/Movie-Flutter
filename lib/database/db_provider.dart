@@ -14,20 +14,20 @@ class DatabaseProvider {
 
   Future<Database> get database async {
     if (_database != null) return _database;
-    _database = await createDatabase();
+    _database = await _createDatabase();
     return _database;
   }
 
-  createDatabase() async {
+  _createDatabase() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "db_movies.db");
 
     var database = await openDatabase(path,
-        version: 1, onCreate: initDB, onUpgrade: onUpgrade);
+        version: 1, onCreate: _initDB, onUpgrade: _onUpgrade);
     return database;
   }
 
-  void initDB(Database database, int version) async {
+  void _initDB(Database database, int version) async {
     await database.execute("CREATE TABLE $moviesFavoriteTable ("
         "id INTEGER PRIMARY KEY,"
         "title TEXT, "
@@ -41,11 +41,10 @@ class DatabaseProvider {
         "tvRelease TEXT, "
         "voteCount INTEGER, "
         "originalLanguage TEXT "
-        ")"
-    );
+        ")");
   }
 
-  void onUpgrade(Database database, int oldVersion, int newVersion) {
-    if(newVersion > oldVersion) {}
+  void _onUpgrade(Database database, int oldVersion, int newVersion) {
+    if (newVersion > oldVersion) {}
   }
 }
