@@ -23,70 +23,40 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Movie App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      routes: {
-        MoviePopularPages.routeName: (context) => BlocProvider(
-              create: (context) {
-                return MoviePopularBloc(repository: MovieRepository());
-              },
-              child: MoviePopularPages(),
-            ),
-        MovieUpComingPages.routeName: (context) => BlocProvider(
-              create: (context) {
-                return MovieUpComingBloc(repository: MovieRepository());
-              },
-              child: MovieUpComingPages(),
-            ),
-        DetailScreen.routeName: (context) => DetailScreen(),
-        DetailNewScreen.routeName: (context) => MultiBlocProvider(
-              providers: [
-                BlocProvider(
-                  create: (context) {
-                    return CrewMovieBloc(repository: MovieRepository());
-                  },
-                ),
-                BlocProvider(
-                  create: (context) {
-                    return MoviesFavoriteBloc(
-                        moviesFavoriteRepository: MoviesFavoriteRepository());
-                  },
-                ),
-                BlocProvider<ListMoviesFavoriteBloc>(
-                  create: (context) {
-                    return ListMoviesFavoriteBloc(
-                        moviesFavoriteRepository: MoviesFavoriteRepository());
-                  },
-                ),
-              ],
-              child: DetailNewScreen(),
-            ),
-      },
-      home: MultiBlocProvider(
-        providers: [
-          BlocProvider<MoviePopularBloc>(
-            create: (context) {
-              return MoviePopularBloc(repository: MovieRepository());
-            },
-          ),
-          BlocProvider<MovieUpComingBloc>(
-            create: (context) {
-              return MovieUpComingBloc(repository: MovieRepository());
-            },
-          ),
-          BlocProvider<ListMoviesFavoriteBloc>(
-            create: (context) {
-              return ListMoviesFavoriteBloc(
-                  moviesFavoriteRepository: MoviesFavoriteRepository());
-            },
-          ),
-        ],
-        child: MovieMainPages(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CrewMovieBloc(repository: MovieRepository()),
+        ),
+        BlocProvider<ListMoviesFavoriteBloc>(
+          create: (context) => ListMoviesFavoriteBloc(
+              moviesFavoriteRepository: MoviesFavoriteRepository()),
+        ),
+        BlocProvider(
+          create: (context) => MoviesFavoriteBloc(
+              moviesFavoriteRepository: MoviesFavoriteRepository()),
+        ),
+        BlocProvider<MoviePopularBloc>(
+          create: (context) => MoviePopularBloc(repository: MovieRepository()),
+        ),
+        BlocProvider<MovieUpComingBloc>(
+          create: (context) => MovieUpComingBloc(repository: MovieRepository()),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Movie App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        routes: {
+          MoviePopularPages.routeName: (context) => MoviePopularPages(),
+          MovieUpComingPages.routeName: (context) => MovieUpComingPages(),
+          DetailScreen.routeName: (context) => DetailScreen(),
+          DetailNewScreen.routeName: (context) => DetailNewScreen(),
+        },
+        home: MovieMainPages(),
       ),
     );
   }
